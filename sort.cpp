@@ -21,7 +21,7 @@ void Bubblesorting(int arr[],int n)
 }
 
 void Insetsorting(int arr[],int n)
-{
+{	//插入排序 
 	for(int a= 1;a<n;a++)
 	{
 		for(int b=a ; b>0 ;b--)
@@ -31,7 +31,7 @@ void Insetsorting(int arr[],int n)
 	}
  } 
  void Selectionsorting(int arr[],int n)
- {
+ {	//选择排序 
  	for(int a =0;a<n;a++)
  	{
  		int bigest = a;
@@ -45,7 +45,7 @@ void Insetsorting(int arr[],int n)
  }
  
  void Shellsorting (int arr[],int n)
- {
+ {	//希尔排序 
  	for(int delta=n/2;delta>0;delta/=2)
  	{	//delta 为步长
 	 	for(int a =delta;a<n;a++)
@@ -61,7 +61,7 @@ void Insetsorting(int arr[],int n)
 }
 
 void Quicksorting(int arr[],int left,int right)
-{
+{	//快速排序 
 	if(left>right)
 	return ;
 	int a,b;
