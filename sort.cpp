@@ -59,13 +59,37 @@ void Insetsorting(int arr[],int n)
 	
 	 }
 }
+
+void Quicksorting(int arr[],int left,int right)
+{
+	if(left>right)
+	return ;
+	int a,b;
+	a=left;
+	b=right;
+	int key = arr[left];//key 为基准数
+	while(a!=b) 
+	{
+		while(a<b&&arr[b]<key)
+			b--;
+		while(a<b&& arr[a]>key)
+			a++;
+		if(a<b)
+			swap(arr[a],arr[b]);
+			 
+	 } 
+	 arr[a]=key;
+	 //递归部分
+	 Quicksorting(arr,left,a-1);
+	 Quicksorting(arr,a+1,right); 
+ } 
 int main()
 {
 	int arr[5]={1,3,5,4,2}; 
 	//Bubblesorting(arr,5);
 	//Insetsorting(arr,5);
 	//Selectionsorting(arr,5);
-	Shellsorting(arr,5);
+	Quicksorting(arr,0,4);
 	for(int i =0;i<5;i++)
 	{
 		cout<<arr[i]<<",";
