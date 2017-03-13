@@ -83,13 +83,49 @@ void Quicksorting(int arr[],int left,int right)
 	 Quicksorting(arr,left,a-1);
 	 Quicksorting(arr,a+1,right); 
  } 
+ void MemeryArray(int arr[],int first,int mid,int last )
+{	//归并算法—分解部分
+	//将数组分解成两个临时数组
+	int numOfTemp1 = mid - first+1;
+	int numOfTemp2 = last -mid;
+	int *Temp1 =new int [numOfTemp1+1];
+	int *Temp2 =new int [numOfTemp2+1];
+	int i =0 , j=0 ,k=0;
+	while(i++<numOfTemp1)
+		Temp1[i]=arr[first+i];
+	while(j++<numOfTemp2) 
+		Temp2[j]=arr[mid+j+1];
+	//归并算法—合并部分
+	for(i=0,j=0,k=first;k<=last;k++)
+	{
+		if(Temp1[i]>Temp2[j])
+			arr[k]=Temp1[i++];
+		else
+			arr[k]=Temp2[j++];
+	}
+	delete[]Temp1;             //重置指针
+	delete[]Temp2; 
+	
+	
+}
+void Mergesorting(int arr[],int first,int last)
+{
+	if(first<last)
+	{
+		int mid =(first+last)/2;
+		Mergesorting(arr,first,mid);
+		Mergesorting(arr,mid+1,last);
+		MemeryArray(arr,first,mid,last);
+	}
+}
 int main()
 {
 	int arr[5]={1,3,5,4,2}; 
 	//Bubblesorting(arr,5);
 	//Insetsorting(arr,5);
 	//Selectionsorting(arr,5);
-	Quicksorting(arr,0,4);
+	//Quicksorting(arr,0,4);
+	Mergesorting(arr,0,4);
 	for(int i =0;i<5;i++)
 	{
 		cout<<arr[i]<<",";
