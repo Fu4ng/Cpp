@@ -70,14 +70,15 @@ void Quicksorting(int arr[],int left,int right)
 	int key = arr[left];//key 为基准数
 	while(a!=b) 
 	{
-		while(a<b&&arr[b]<key)
+		while(a<b&&arr[b]<=key)
 			b--;
-		while(a<b&& arr[a]>key)
+		while(a<b&& arr[a]>=key)
 			a++;
 		if(a<b)
 			swap(arr[a],arr[b]);
 			 
 	 } 
+	 arr[left]=arr[a];  //防止数相同
 	 arr[a]=key;
 	 //递归部分
 	 Quicksorting(arr,left,a-1);
